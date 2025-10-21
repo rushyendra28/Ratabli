@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 480),
               child: Card(
-                color: const Color.fromARGB(212, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 elevation: 12,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 8),
                       const Text(
                         'Sign in to your account',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: Colors.black54),
                       ),
                       const SizedBox(height: 20),
 
@@ -109,13 +109,13 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
                                 labelText: 'Email',
-                                labelStyle: TextStyle(color: Colors.white70),
+                                labelStyle: TextStyle(color: Colors.black54),
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
-                                  color: Colors.white70,
+                                  color: Colors.black87,
                                 ),
                               ),
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black87),
                               validator: (v) {
                                 if (v == null || v.trim().isEmpty)
                                   return 'Enter email';
@@ -130,10 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                               obscureText: _obscure,
                               decoration: InputDecoration(
                                 labelText: 'Password',
-                                labelStyle: TextStyle(color: Colors.white70),
+                                labelStyle: TextStyle(color: Colors.black54),
                                 prefixIcon: const Icon(
                                   Icons.lock_outline,
-                                  color: Colors.white70,
+                                  color: Colors.black87,
                                 ),
                                 suffixIcon: IconButton(
                                   icon: Icon(
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                                       setState(() => _obscure = !_obscure),
                                 ),
                               ),
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
                               validator: (v) {
                                 if (v == null || v.isEmpty)
                                   return 'Enter password';
@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                                 child: const Text(
                                   'Forgot password?',
-                                  style: TextStyle(color: Colors.white70),
+                                  style: TextStyle(color: Colors.black54),
                                 ),
                               ),
                             ),
@@ -226,7 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                                   padding: EdgeInsets.symmetric(horizontal: 8),
                                   child: Text(
                                     'or',
-                                    style: TextStyle(color: Colors.white70),
+                                    style: TextStyle(color: Colors.black54),
                                   ),
                                 ),
                                 Expanded(child: Divider()),
@@ -238,13 +238,13 @@ class _LoginPageState extends State<LoginPage> {
                               child: OutlinedButton.icon(
                                 icon: const Icon(
                                   Icons.login,
-                                  color: Colors.white70,
+                                  color: Colors.black87,
                                 ),
                                 label: const Text(
                                   'Sign in with Google',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white70,
+                                    color: Colors.black54,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -264,7 +264,10 @@ class _LoginPageState extends State<LoginPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text('Don\'t have an account?'),
+                                const Text(
+                                  'Don\'t have an account?',
+                                  style: TextStyle(color: Colors.black54),
+                                ),
                                 TextButton(
                                   onPressed: () {
                                     // TODO: navigate to sign up
@@ -276,7 +279,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   child: const Text(
                                     'Create account',
-                                    style: TextStyle(color: Colors.white70),
+                                    style: TextStyle(color: Colors.black87),
                                   ),
                                 ),
                               ],

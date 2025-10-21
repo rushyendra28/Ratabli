@@ -12,7 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Ratabli',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.deepPurple,
+        primaryColor: Colors.white70,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.white70,
+          brightness: Brightness.dark,
+        ),
       ),
       initialRoute: '/login',
       routes: {
