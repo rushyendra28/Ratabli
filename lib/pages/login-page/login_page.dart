@@ -77,8 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                                 ..shader =
                                     const LinearGradient(
                                       colors: [
-                                        Colors.deepPurple,
-                                        Colors.purpleAccent,
+                                        Colors.deepOrange,
+                                        Colors.orangeAccent,
                                       ],
                                       begin: Alignment.centerLeft,
                                       end: Alignment.centerRight,
@@ -178,8 +178,8 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
                                     colors: [
-                                      Colors.deepPurple,
-                                      Colors.purpleAccent,
+                                      Colors.deepOrange,
+                                      Colors.orangeAccent,
                                     ],
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight,
