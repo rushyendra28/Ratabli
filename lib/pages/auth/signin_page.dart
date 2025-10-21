@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -38,10 +39,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
+    var infinity = double.infinity;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       body: Container(
-        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.deepOrange, Colors.orangeAccent],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        width: infinity,
         height: double.infinity,
         child: SingleChildScrollView(
           padding: EdgeInsets.only(
@@ -270,10 +278,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    // TODO: navigate to sign up
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text('Create account tapped'),
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => const SignUpPage(),
                                       ),
                                     );
                                   },
