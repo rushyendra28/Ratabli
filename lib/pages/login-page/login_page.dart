@@ -295,5 +295,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-//
-// i wanna change the background color of sign in button from white to a deep purple to purple accent gradient.
