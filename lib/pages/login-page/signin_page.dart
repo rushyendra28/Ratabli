@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 16, 5, 20),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 480),
               child: Card(
-                color: const Color.fromARGB(213, 40, 13, 55),
+                color: const Color.fromARGB(212, 255, 255, 255),
                 elevation: 12,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
