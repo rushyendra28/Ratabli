@@ -116,6 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Colors.black87,
                             ),
                           ),
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) => v == null || v.isEmpty
                               ? 'Enter first name'
                               : null,
@@ -133,6 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Colors.black87,
                             ),
                           ),
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) =>
                               v == null || v.isEmpty ? 'Enter last name' : null,
                         ),
@@ -201,6 +203,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Colors.black87,
                             ),
                           ),
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) {
                             if (v == null || v.isEmpty) return 'Enter email';
                             if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(v)) {
@@ -225,6 +228,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           initialCountryCode: 'OM',
                           onChanged: (phone) {},
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) {
                             if (v == null || v.number.isEmpty) {
                               return 'Enter phone number';
@@ -255,6 +259,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   setState(() => _obscure1 = !_obscure1),
                             ),
                           ),
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) {
                             if (v == null || v.isEmpty) return 'Enter password';
                             if (v.length < 6) return 'Password too short';
@@ -284,6 +289,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   setState(() => _obscure2 = !_obscure2),
                             ),
                           ),
+                          style: const TextStyle(color: Colors.black87),
                           validator: (v) {
                             if (v != _pwCtrl.text) {
                               return 'Passwords do not match';
