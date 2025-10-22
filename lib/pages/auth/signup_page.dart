@@ -355,7 +355,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: OutlinedButton.icon(
                             icon: const Icon(
                               Icons.login,
-                              color: Colors.black54,
+                              color: Colors.deepOrange,
                             ),
                             label: const Text(
                               'Continue with Google',

@@ -246,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: OutlinedButton.icon(
                                 icon: const Icon(
                                   Icons.login,
-                                  color: Colors.black87,
+                                  color: Colors.deepOrange,
                                 ),
                                 label: const Text(
                                   'Sign in with Google',
@@ -287,7 +287,10 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   child: const Text(
                                     'Create account',
-                                    style: TextStyle(color: Colors.black87),
+                                    style: TextStyle(
+                                      color: Colors.deepOrange,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ],
