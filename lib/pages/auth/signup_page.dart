@@ -83,7 +83,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height:
                         mq.height * 0.10, // Adjust size as needed (0.08–0.12)
                     child: Image.asset(
-                      'lib/assets/logo.png', // ← Make sure this path is correct
+                      'assets/icon/app-logo.png', // ← Make sure this path is correct
                       fit: BoxFit.contain,
                     ),
                   ),
