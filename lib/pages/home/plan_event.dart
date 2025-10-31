@@ -14,6 +14,10 @@ class _PlanEventPageState extends State<PlanEventPage> {
   DateTime? _selectedDate;
   final TextEditingController _eventNameCtrl = TextEditingController();
   final TextEditingController _locationCtrl = TextEditingController();
+  bool _isFamily = false;
+  bool _isKids = false;
+  bool _isProfessionals = false;
+  bool _isOthers = false;
 
   Future<void> _pickDate() async {
     final picked = await showDatePicker(
@@ -212,6 +216,86 @@ class _PlanEventPageState extends State<PlanEventPage> {
                       ),
                       const SizedBox(height: 24),
 
+                      const Text(
+                        "Target Audience",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+
+                      CheckboxListTile(
+                        title: const Text(
+                          "Family",
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                        value: _isFamily,
+                        activeColor: Colors.deepOrange,
+                        onChanged: (val) => setState(() => _isFamily = val!),
+                        dense: true,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      CheckboxListTile(
+                        title: const Text(
+                          "Kids",
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                        value: _isKids,
+                        activeColor: Colors.deepOrange,
+                        onChanged: (val) => setState(() => _isKids = val!),
+                        dense: true,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      CheckboxListTile(
+                        title: const Text(
+                          "Professionals",
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                        value: _isProfessionals,
+                        activeColor: Colors.deepOrange,
+                        onChanged: (val) =>
+                            setState(() => _isProfessionals = val!),
+                        dense: true,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      CheckboxListTile(
+                        title: const Text(
+                          "Others",
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                        value: _isOthers,
+                        activeColor: Colors.deepOrange,
+                        onChanged: (val) => setState(() => _isOthers = val!),
+                        dense: true,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Event Scale
+                      const Text(
+                        "Number of Guests",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+
+                      TextField(
+                        controller: _eventNameCtrl,
+                        decoration: InputDecoration(
+                          hintText: "e.g., 50, 100, 200",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+
                       // Event Date
                       const Text(
                         "Event Date",
@@ -273,32 +357,6 @@ class _PlanEventPageState extends State<PlanEventPage> {
                         ),
                       ),
                       const SizedBox(height: 16),
-
-                      // Event Scale
-                      const Text(
-                        "Number of Guests",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-
-                      TextField(
-                        controller: _eventNameCtrl,
-                        decoration: InputDecoration(
-                          hintText: "e.g., 50, 100, 200",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-                      // Vibe
 
                       // 🔸 Submit Button
                       Container(
