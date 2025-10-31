@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'plan_event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -179,6 +180,14 @@ class _HomePageState extends State<HomePage>
                         label: 'Plan Your Event',
                         color1: Colors.deepOrange,
                         color2: Colors.orangeAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PlanEventPage(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -375,12 +384,16 @@ class _HomePageState extends State<HomePage>
 
   // 🔹 Quick Action Cards
   Widget _quickAction({
-    required IconData icon,
-    required String label,
-    required Color color1,
-    required Color color2,
-  }) {
-    return Expanded(
+  required IconData icon,
+  required String label,
+  required Color color1,
+  required Color color2,
+  VoidCallback? onTap,
+}) {
+  return Expanded(
+    child: InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: onTap,
       child: Container(
         height: 110,
         margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -421,6 +434,8 @@ class _HomePageState extends State<HomePage>
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
