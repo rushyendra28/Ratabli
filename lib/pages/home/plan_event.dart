@@ -146,15 +146,15 @@ class _PlanEventPageState extends State<PlanEventPage> {
                       "Plan Your Event",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const Spacer(),
-                    Image.asset('lib/assets/logo.png', height: 40),
+                    // Image.asset('lib/assets/logo.png', height: 30),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 20),
 
                 // 🔸 Form Container
                 Container(
