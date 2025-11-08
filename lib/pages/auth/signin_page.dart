@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
 import 'package:ratabli/pages/home/home_page.dart';
+import 'package:ratabli/services/auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
   final _pwCtrl = TextEditingController();
+  final AuthService _authService = AuthService();
   bool _obscure = true;
   bool _loading = false;
 
@@ -23,20 +25,45 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _trySignIn() {
+  Future<void> _trySignIn() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _loading = true);
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() => _loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signed in as ${_emailCtrl.text}')),
-      );
+
+    final error = await _authService.signInWithEmail(
+      email: _emailCtrl.text.trim(),
+      password: _pwCtrl.text.trim(),
+    );
+
+    setState(() => _loading = false);
+
+    if (error != null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(error)));
+    } else {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const HomePage()),
       );
-    });
+    }
   }
+
+  // Future<void> _tryGoogleSignIn() async {
+  //   setState(() => _loading = true);
+
+  //   final error = await _authService.signInWithGoogle();
+
+  //   setState(() => _loading = false);
+
+  //   if (error != null) {
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text(error)));
+  //   } else {
+  //     Navigator.pushReplacement(
+  //       context,
+  //       MaterialPageRoute(builder: (_) => const HomePage()),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -268,35 +295,25 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(height: 8),
 
                                 // 🔸 Google Button
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: OutlinedButton.icon(
-                                    icon: const Icon(
-                                      Icons.login,
-                                      color: Colors.deepOrange,
-                                    ),
-                                    label: const Text(
-                                      'Sign in with Google',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black54,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                            'Google sign-in placeholder',
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
+                                // SizedBox(
+                                //   width: double.infinity,
+                                //   child: OutlinedButton.icon(
+                                //     icon: const Icon(
+                                //       Icons.login,
+                                //       color: Colors.deepOrange,
+                                //     ),
+                                //     label: const Text(
+                                //       'Sign in with Google',
+                                //       style: TextStyle(
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.black54,
+                                //         fontSize: 16,
+                                //       ),
+                                //     ),
+                                //     onPressed: _loading ? null : _tryGoogleSignIn,
+                                //   ),
+                                // ),
+                                // const SizedBox(height: 12),
 
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -310,7 +327,8 @@ class _LoginPageState extends State<LoginPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (_) => const SignUpPage(),
+                                            builder: (_) =>
+                                                const SignUpPage(),
                                           ),
                                         );
                                       },

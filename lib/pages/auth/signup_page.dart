@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ratabli/pages/home/home_page.dart';
+import 'package:ratabli/services/auth.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -11,6 +12,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+  final AuthService _authService = AuthService();
+
   final _firstCtrl = TextEditingController();
   final _lastCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
@@ -34,21 +37,47 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
-  void _trySignUp() {
+  Future<void> _trySignUp() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _loading = true);
 
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() => _loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Account created for ${_emailCtrl.text}')),
-      );
+    final error = await _authService.signUpWithEmail(
+      email: _emailCtrl.text.trim(),
+      password: _pwCtrl.text.trim(),
+    );
+
+    setState(() => _loading = false);
+
+    if (error != null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(error)));
+    } else {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const HomePage()),
       );
-    });
+    }
   }
+
+  // Future<void> _tryGoogleSignUp() async {
+  //   setState(() => _loading = true);
+
+  //   final error = await _authService.signInWithGoogle();
+
+  //   setState(() => _loading = false);
+
+  //   if (error != null) {
+  //     ScaffoldMessenger.of(
+  //       context,
+  //     ).showSnackBar(SnackBar(content: Text(error)));
+  //   } else {
+  //     Navigator.pushReplacement(
+  //       context,
+  //       MaterialPageRoute(builder: (_) => const HomePage()),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -78,12 +107,11 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // 🔸 Logo at the top (same as in LoginPage)
+                  // 🔸 Logo
                   SizedBox(
-                    height:
-                        mq.height * 0.10, // Adjust size as needed (0.08–0.12)
+                    height: mq.height * 0.10,
                     child: Image.asset(
-                      'assets/icon/app-logo.png', // ← Make sure this path is correct
+                      'assets/icon/app-logo.png',
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -106,7 +134,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            // Title
                             ShaderMask(
                               shaderCallback: (bounds) => const LinearGradient(
                                 colors: [
@@ -245,17 +272,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   Icons.phone_outlined,
                                   color: Colors.black87,
                                 ),
-                                border: UnderlineInputBorder(),
                               ),
                               initialCountryCode: 'OM',
                               onChanged: (phone) {},
                               style: const TextStyle(color: Colors.black87),
-                              validator: (v) {
-                                if (v == null || v.number.isEmpty) {
-                                  return 'Enter phone number';
-                                }
-                                return null;
-                              },
                             ),
                             const SizedBox(height: 12),
 
@@ -295,7 +315,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             const SizedBox(height: 12),
 
-                            // Re-enter Password
+                            // Confirm Password
                             TextFormField(
                               controller: _repwCtrl,
                               obscureText: _obscure2,
@@ -386,34 +406,26 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             const SizedBox(height: 14),
 
-                            // Continue with Google
-                            SizedBox(
-                              width: double.infinity,
-                              child: OutlinedButton.icon(
-                                icon: const Icon(
-                                  Icons.login,
-                                  color: Colors.deepOrange,
-                                ),
-                                label: const Text(
-                                  'Continue with Google',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                        'Google Sign-Up placeholder',
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            const SizedBox(height: 12),
+                            // Google Sign-in
+                            // SizedBox(
+                            //   width: double.infinity,
+                            //   child: OutlinedButton.icon(
+                            //     icon: const Icon(
+                            //       Icons.login,
+                            //       color: Colors.deepOrange,
+                            //     ),
+                            //     label: const Text(
+                            //       'Continue with Google',
+                            //       style: TextStyle(
+                            //         fontWeight: FontWeight.bold,
+                            //         color: Colors.black54,
+                            //         fontSize: 16,
+                            //       ),
+                            //     ),
+                            //     onPressed: _loading ? null : _tryGoogleSignUp,
+                            //   ),
+                            // ),
+                            // const SizedBox(height: 12),
 
                             // Back to Login
                             Row(
