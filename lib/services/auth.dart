@@ -57,7 +57,7 @@ class AuthService {
   //       scopes: ['email'],
   //     );
 
-  //     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+  //     final GoogleSignInAccount? googleUser = await googleSignIn.sigfnIn();
   //     if (googleUser == null) return 'Sign-in aborted';
 
   //     final GoogleSignInAuthentication googleAuth =
