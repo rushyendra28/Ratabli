@@ -218,7 +218,7 @@ class _PlanEventPageState extends State<PlanEventPage> {
                       ),
                       const SizedBox(height: 6),
                       DropdownButtonFormField<String>(
-                        value: _eventType,
+                        initialValue: _eventType,
                         items: const [
                           DropdownMenuItem(
                             value: 'Wedding',
@@ -268,7 +268,7 @@ class _PlanEventPageState extends State<PlanEventPage> {
                       ),
                       const SizedBox(height: 6),
                       DropdownButtonFormField<String>(
-                        value: _vibe,
+                        initialValue: _vibe,
                         items: const [
                           DropdownMenuItem(
                             value: 'Casual',
@@ -385,7 +385,7 @@ class _PlanEventPageState extends State<PlanEventPage> {
                       ),
                       const SizedBox(height: 6),
                       DropdownButtonFormField<String>(
-                        value: _eventLocation,
+                        initialValue: _eventLocation,
                         items: const [
                           DropdownMenuItem(
                             value: 'Indoor',

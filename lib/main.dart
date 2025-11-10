@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ratabli/pages/auth/signin_page.dart';
-import 'package:ratabli/services/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {

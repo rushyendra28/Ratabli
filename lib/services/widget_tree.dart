@@ -1,7 +1,6 @@
 import 'package:ratabli/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ratabli/pages/auth/signin_page.dart';
-import 'package:ratabli/pages/auth/signup_page.dart';
 import 'package:ratabli/pages/home/home_page.dart';
 
 class WidgetTree extends StatelessWidget {

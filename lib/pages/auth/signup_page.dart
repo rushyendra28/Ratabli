@@ -192,7 +192,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                             // Account Type
                             DropdownButtonFormField<String>(
-                              value: _accountType,
+                              initialValue: _accountType,
                               decoration: const InputDecoration(
                                 labelText: 'Account Type',
                                 labelStyle: TextStyle(color: Colors.black54),
