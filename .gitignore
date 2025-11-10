@@ -47,7 +47,6 @@ app.*.map.json
 # Firebase Google services files
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
-/Users/rushyendragusidi/develop/Ratabli/ios/Runner/GoogleService-Info.plist
 
 # Any other environment or config files
 .env
